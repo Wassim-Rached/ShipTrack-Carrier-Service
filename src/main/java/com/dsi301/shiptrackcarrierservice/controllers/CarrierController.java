@@ -2,6 +2,7 @@ package com.dsi301.shiptrackcarrierservice.controllers;
 
 import com.dsi301.shiptrackcarrierservice.dto.carrier.CreateCarrierRequestDTO;
 import com.dsi301.shiptrackcarrierservice.dto.carrier.ShipmentInfoRequestDTO;
+import com.dsi301.shiptrackcarrierservice.dto.carrier.UpdateCarrierLiveTrackingLink;
 import com.dsi301.shiptrackcarrierservice.entities.Carrier;
 import com.dsi301.shiptrackcarrierservice.interfaces.ICarrierService;
 import lombok.RequiredArgsConstructor;
@@ -40,8 +41,8 @@ public class CarrierController {
 
     // update 'carrier' live tracking link
     @PutMapping("/{carrierId}/live-tracking-link")
-    public Carrier updateCarrierLiveTrackingLink(@PathVariable Integer carrierId, @RequestBody String liveTrackingLink) {
-        return carrierService.updateCarrierLiveTrackingLink(carrierId, liveTrackingLink);
+    public Carrier updateCarrierLiveTrackingLink(@PathVariable Integer carrierId, @RequestBody UpdateCarrierLiveTrackingLink requestDTO) {
+        return carrierService.updateCarrierLiveTrackingLink(carrierId, requestDTO.getLiveTrackingLink());
     }
 
     // get carrier live tracking link
